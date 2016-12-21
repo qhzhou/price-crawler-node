@@ -1,0 +1,14 @@
+{
+  "name": "price-crawler",
+  "version": "1.0.0",
+  "description": "record price for sku",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "qianhao.zhou",
+  "license": "ISC",
+  "dependencies": {
+    "zombie": "^5.0.5"
+  }
+}
