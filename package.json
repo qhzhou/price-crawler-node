@@ -9,6 +9,7 @@
   "author": "qianhao.zhou",
   "license": "ISC",
   "dependencies": {
+    "phantomjs-prebuilt": "^2.1.14",
     "zombie": "^5.0.5"
   }
 }
