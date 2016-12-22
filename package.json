@@ -11,5 +11,9 @@
   "dependencies": {
     "phantomjs-prebuilt": "^2.1.14",
     "zombie": "^5.0.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/qhzhou/price-crawler-node.git"
   }
 }
