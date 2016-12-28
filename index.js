@@ -2,64 +2,7 @@
 
 var Webpage = require('webpage');
 var system = require('system');
-
-var input = [
-    {
-        company: "lazy cat",
-        skuIndex: 0,
-        url: "https://items.alitrip.com/item.htm?spm=181.7621407.a1z9b.23.vxpueT&id=41027834971&scm=20140635.1_1_5.0_b.0a67c0bb14819650716067969e"
-    },
-    {
-        company: "lazy cat",
-        skuIndex: 1,
-        url: "https://items.alitrip.com/item.htm?spm=181.7621407.a1z9b.23.vxpueT&id=41027834971&scm=20140635.1_1_5.0_b.0a67c0bb14819650716067969e"
-    },
-    {
-        company: "lazy cat",
-        skuIndex: 2,
-        url: "https://items.alitrip.com/item.htm?spm=181.7621407.a1z9b.23.vxpueT&id=41027834971&scm=20140635.1_1_5.0_b.0a67c0bb14819650716067969e"
-    },
-    {
-        company: "rruu",
-        skuIndex: 0,
-        url: "https://items.alitrip.com/item.htm?spm=181.7621407.a1z9b.28.vxpueT&id=532640305672&scm=20140635.1_1_6.0_b.0a67c0bb14819650716067969e"
-    },
-    {
-        company: "rruu",
-        skuIndex: 1,
-        url: "https://items.alitrip.com/item.htm?spm=181.7621407.a1z9b.28.vxpueT&id=532640305672&scm=20140635.1_1_6.0_b.0a67c0bb14819650716067969e"
-    },
-    {
-        company: "rruu",
-        skuIndex: 2,
-        url: "https://items.alitrip.com/item.htm?spm=181.7621407.a1z9b.28.vxpueT&id=532640305672&scm=20140635.1_1_6.0_b.0a67c0bb14819650716067969e"
-    },
-    {
-        company: "itrip",
-        skuIndex: 0,
-        url: "https://items.alitrip.com/item.htm?spm=181.7621407.a1z9b.33.vxpueT&id=527167821291&scm=20140635.1_1_7.0_b.0a67c0bb14819650716067969e"
-    },
-    {
-        company: "itrip",
-        skuIndex: 1,
-        url: "https://items.alitrip.com/item.htm?spm=181.7621407.a1z9b.33.vxpueT&id=527167821291&scm=20140635.1_1_7.0_b.0a67c0bb14819650716067969e"
-    },
-    {
-        company: "tours for fun",
-        skuIndex: 0,
-        url: "https://items.alitrip.com/item.htm?spm=181.7621407.a1z9b.43.vxpueT&id=521354623106&scm=20140635.1_1_9.0_b.0a67c0bb14819650716067969e"
-    },
-    {
-        company: "tours for fun",
-        skuIndex: 1,
-        url: "https://items.alitrip.com/item.htm?spm=181.7621407.a1z9b.43.vxpueT&id=521354623106&scm=20140635.1_1_9.0_b.0a67c0bb14819650716067969e"
-    },
-    {
-        company: "tours for fun",
-        skuIndex: 2,
-        url: "https://items.alitrip.com/item.htm?spm=181.7621407.a1z9b.43.vxpueT&id=521354623106&scm=20140635.1_1_9.0_b.0a67c0bb14819650716067969e"
-    }
-]
+var fs = require('fs');
 
 function crawl(json) {
     console.log("crawling " + json.url);
@@ -87,7 +30,8 @@ function crawl(json) {
                     url: json.url,
                     price: parseFloat(price),
                     category: category.trim(),
-                    secret: "secret"
+                    secret: "secret",
+                    sku: json.sku
                 };
                 var settings = {
                     operation: "POST",
@@ -109,6 +53,7 @@ function crawl(json) {
 
 if (system.args.length === 2) {
     var idx = parseInt(system.args[1]);
+    var input = JSON.parse(fs.read('input.json'));
     crawl(input[idx]);
 } else {
     console.log('invalid params');
